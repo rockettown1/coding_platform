@@ -1,12 +1,31 @@
-import HealthCheckController from "../healthcheck";
+import request from "supertest";
+import express from "express";
+import Server from "../../lib/Server";
+import HealthCheckController from "../Healthcheck";
+
+let healthRoute: HealthCheckController;
+
+beforeAll(() => {
+  healthRoute = new HealthCheckController();
+});
 
 describe("HealthCheck Controller", () => {
-  const healthCheck = new HealthCheckController();
   it("should have the main path as /api", () => {
-    expect(healthCheck.path).toEqual("/api");
+    expect(healthRoute.path).toEqual("/api");
   });
 
   it("should return all route objects when getRoutes method called", () => {
-    expect(healthCheck.getRoutes[0].path).toEqual("/health");
+    expect(healthRoute.getRoutes[0].path).toEqual("/health");
+  });
+
+  it("should send json to endpoint /api/health", (done) => {
+    const server = new Server(express(), "3000");
+    server.loadControllers([healthRoute]);
+
+    request(server.app)
+      .get("/api/health")
+      .expect("Content-Type", /json/)
+      .expect({ message: "Everything looks OK to me!" })
+      .expect(200, done);
   });
 });

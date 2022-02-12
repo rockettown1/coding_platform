@@ -5,7 +5,7 @@ import { errorHandler } from "./ErrorHandler";
 import CustomError from "./CustomError";
 
 export default class Server {
-  private app: Express;
+  public readonly app: Express;
   private port: string | undefined;
 
   constructor(app: Express, port: string | undefined) {

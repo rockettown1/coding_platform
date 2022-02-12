@@ -4,7 +4,7 @@ import CustomError from "./CustomError";
 import { Errors, HttpStatusCode } from "./constants/";
 
 export default abstract class Controller {
-  protected router = Router();
+  public router = Router();
   protected routes: RouteObject[];
   public path: string;
 
