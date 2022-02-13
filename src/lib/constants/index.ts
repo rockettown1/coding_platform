@@ -21,7 +21,8 @@ export enum Http {
 }
 
 export enum Paths {
+  root = "/",
   api = "/api",
   health = "/health",
-  testrun = "/testrun",
+  testresult = "/testresult",
 }

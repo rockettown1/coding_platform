@@ -98,7 +98,7 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "include": ["src"],
-  "exclude": ["src/*/__tests__"]
+  "exclude": ["src/*/tests"]
   // "typedocOptions": {
   //   "entryPoint": ["src/app.ts"],
   //   "out": "docs"

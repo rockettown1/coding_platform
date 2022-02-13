@@ -21,11 +21,14 @@ describe("HealthCheck Controller", () => {
   it("should send json to endpoint /api/health", (done) => {
     const server = new Server(express(), "3000");
     server.loadControllers([healthRoute]);
+    const s = server.run();
 
     request(server.app)
       .get("/api/health")
       .expect("Content-Type", /json/)
       .expect({ message: "Everything looks OK to me!" })
       .expect(200, done);
+
+    s.close();
   });
 });
