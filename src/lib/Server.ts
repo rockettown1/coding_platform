@@ -68,6 +68,7 @@ export class Server {
   /**
    * Serves static directories
    * @param name
+   * @param path
    * @param folder
    */
   public serveStatic(name: string, path: string, folder: string) {

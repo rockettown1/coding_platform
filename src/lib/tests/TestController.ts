@@ -1,5 +1,5 @@
-import { Controller } from "./Controller";
-import { Http } from "./constants";
+import { Controller } from "../Controller";
+import { Http } from "../constants";
 
 export class TestController extends Controller {
   public path: string = "/test";
