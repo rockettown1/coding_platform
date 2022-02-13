@@ -1,7 +1,7 @@
 import request from "supertest";
 import express from "express";
-import Server from "../../lib/Server";
-import HealthCheckController from "../Healthcheck";
+import { Server } from "../../lib/Server";
+import { HealthCheckController } from "../Healthcheck";
 
 let healthRoute: HealthCheckController;
 

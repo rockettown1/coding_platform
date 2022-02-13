@@ -1,8 +1,8 @@
-import Controller from "../lib/Controller";
+import { Controller } from "../lib/Controller";
 import { Request, Response, NextFunction } from "express";
 import { Http, Paths } from "../lib/constants";
 
-export default class HealthCheckController extends Controller {
+export class HealthCheckController extends Controller {
   public path: string = Paths.api;
   protected routes = [
     {

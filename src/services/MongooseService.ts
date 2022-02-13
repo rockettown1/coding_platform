@@ -7,4 +7,4 @@ class MongooseService implements IDatabase {
   }
 }
 
-export default new MongooseService();
+export const mongooseService = new MongooseService();

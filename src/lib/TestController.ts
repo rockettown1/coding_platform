@@ -1,7 +1,7 @@
-import Controller from "./Controller";
+import { Controller } from "./Controller";
 import { Http } from "./constants";
 
-export default class TestController extends Controller {
+export class TestController extends Controller {
   public path: string = "/test";
   public routes = [
     {

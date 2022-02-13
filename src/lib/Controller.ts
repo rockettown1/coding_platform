@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { RouteObject } from "./Types";
-import CustomError from "./CustomError";
+import { CustomError } from "./CustomError";
 import { Errors, HttpStatusCode } from "./constants/";
 
-export default abstract class Controller {
+export abstract class Controller {
   public router = Router();
   protected routes: RouteObject[];
   public path: string;

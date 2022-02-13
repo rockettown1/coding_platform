@@ -6,7 +6,7 @@ export const logs = {
   ctr_success: chalk.bgGreen.black(" - Controllers have been loaded "),
   ctr_fail: chalk.bgRed.black(" - Unable to load controllers "),
   static_success: (name: string, folder: string) =>
-    chalk.bgGreen.black(` - Serving ${name} from ${folder} `),
+    chalk.bgGreen.black(` - Serving ${name} from ${folder} directory `),
   static_fail: (folder: string) =>
     chalk.bgRed.black(` - Unable to serve static files from ${folder} `),
   listening: (port: string | undefined) =>

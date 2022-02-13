@@ -1,9 +1,9 @@
-import Server from "../Server";
+import { Server } from "../Server";
 import { Express } from "express";
 import { Express as JestExpress } from "jest-express/lib/express";
-import TestController from "../TestController";
+import { TestController } from "../TestController";
 import { errorHandler } from "../ErrorHandler";
-import CustomError from "../CustomError";
+import { CustomError } from "../CustomError";
 import { Http } from "../constants/";
 
 let server: Server;

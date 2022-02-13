@@ -2,9 +2,14 @@ import express, { Express } from "express";
 import { IController, IDatabase } from "./Types";
 import { logs } from "./constants/logging";
 import { errorHandler } from "./ErrorHandler";
-import CustomError from "./CustomError";
+import { CustomError } from "./CustomError";
 
-export default class Server {
+/**
+ * Server Class: Instantiates new Express server
+ * @description Loads middleware, controllers, databases, and listens for incoming requests
+ *
+ */
+export class Server {
   public readonly app: Express;
   private port: string | undefined;
 
@@ -13,6 +18,10 @@ export default class Server {
     this.port = port;
   }
 
+  /**
+   * Loads global middleware
+   * @param middleware
+   */
   public loadMiddleware(middleware: any[]) {
     try {
       middleware.forEach((mw) => {
@@ -25,6 +34,10 @@ export default class Server {
     }
   }
 
+  /**
+   * Loads controller objects
+   * @param controllers
+   */
   public loadControllers(controllers: IController[]) {
     try {
       controllers.forEach((controller) => {
@@ -37,6 +50,10 @@ export default class Server {
     }
   }
 
+  /**
+   * Connects to database objects
+   * @param databaseServices
+   */
   public async connectToDatabase(databaseServices: IDatabase[]) {
     try {
       databaseServices.forEach(async (service) => {
@@ -48,9 +65,14 @@ export default class Server {
     }
   }
 
-  public serveStatic(name: string, folder: string) {
+  /**
+   * Serves static directories
+   * @param name
+   * @param folder
+   */
+  public serveStatic(name: string, path: string, folder: string) {
     try {
-      this.app.use("/", express.static(folder));
+      this.app.use(`${path}`, express.static(folder));
       console.log(logs.static_success(name, folder));
     } catch (err) {
       console.log(logs.static_fail);
@@ -58,6 +80,10 @@ export default class Server {
     }
   }
 
+  /**
+   * Starts the server and listens for incoming requests
+   * @returns listening message in the console
+   */
   public run() {
     return this.app.listen(this.port, () => {
       console.log(logs.listening(this.port));

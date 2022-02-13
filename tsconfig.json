@@ -99,4 +99,8 @@
   },
   "include": ["src"],
   "exclude": ["src/*/__tests__"]
+  // "typedocOptions": {
+  //   "entryPoint": ["src/app.ts"],
+  //   "out": "docs"
+  // }
 }

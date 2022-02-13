@@ -1,6 +1,6 @@
 import { errorHandler } from "../ErrorHandler";
 import { logger } from "../../services/Logger";
-import CustomError from "../CustomError";
+import { CustomError } from "../CustomError";
 
 jest.mock("../../services/Logger", () => {
   return {

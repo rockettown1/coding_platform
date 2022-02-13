@@ -1,5 +1,5 @@
 import { logger } from "../services/Logger";
-import CustomError from "./CustomError";
+import { CustomError } from "./CustomError";
 
 class ErrorHandler {
   async handleError(err: CustomError) {
