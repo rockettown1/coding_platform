@@ -2,6 +2,9 @@ import { promises as fs } from "fs";
 import { testCases } from "../utils/testCases";
 import { ChildProcessWithoutNullStreams, spawn } from "child_process";
 
+/**
+ * Judges the users code against predefined test cases
+ */
 export class Judge {
   private vmstr = `
   //this has been injected!
@@ -33,6 +36,13 @@ export class Judge {
     await fs.writeFile(`./temp/${id}.test.ts`, injectFunc);
   }
 
+  /**
+   * Takes a users code and executes Jest against a test case for a specific problem, creating a temporary test file and results json file.
+   * @param id
+   * @param strFunc
+   * @param problem
+   * @returns {child, timeout} the child process stream to get results from Jest, and a timeout function
+   */
   async scriptRunner(id: string, strFunc: string, problem: string) {
     let result: ChildProcessWithoutNullStreams;
     try {
