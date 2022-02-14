@@ -1,7 +1,7 @@
 import { Controller } from "../lib/Controller";
 import { Request, Response } from "express";
 import { Http, Paths } from "../lib/constants";
-import { scriptRunner } from "../utils/scriptRunner";
+import { judge } from "../services/Judge";
 import fs from "fs";
 
 export class TestRunnerController extends Controller {
@@ -18,7 +18,7 @@ export class TestRunnerController extends Controller {
   private async runTests(req: Request, res: Response) {
     const { id, code, problemName } = req.body;
     res.header("Content-Type", "application/json");
-    const result = await scriptRunner(id, code, problemName);
+    const result = await judge.scriptRunner(id, code, problemName);
 
     if (result) {
       result.child.stderr.on("data", (data) => {
